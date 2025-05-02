@@ -13,6 +13,38 @@ function banner() {
                 `, "color: #ed4e4c");
 }
 
+function startLoadingScreen() {
+	const overlay = document.createElement("div");
+	overlay.id = "tab3u-loading-overlay";
+	overlay.textContent = "⏳ Tab3U Script Loading...";
+
+	Object.assign(overlay.style, {
+		position: "fixed",
+		top: "0",
+		left: "0",
+		width: "100%",
+		height: "100%",
+		backdropFilter: "blur(5px)",
+		WebkitBackdropFilter: "blur(5px)",
+		backgroundColor: "rgba(255, 255, 255, 0.3)",
+		color: "#333",
+		fontSize: "24px",
+		display: "flex",
+		justifyContent: "center",
+		alignItems: "center",
+		zIndex: "9999",
+	});
+
+	document.body.appendChild(overlay);
+}
+
+function stopLoadingScreen() {
+	const overlay = document.getElementById("tab3u-loading-overlay");
+	if (overlay) {
+		overlay.remove();
+	}
+}
+
 function chordsMapping() {
 	// Get elements with class `chords` & `chords_en`
 	const chordLines = document.getElementsByClassName("chords");
@@ -185,5 +217,11 @@ function init() {
 
 // Run init() function when window loaded
 window.onload = () => {
+	stopLoadingScreen();
 	init();
 };
+
+// Run startLoadingScreen() function on `DOMContentLoaded`
+document.addEventListener("DOMContentLoaded", () => {
+	startLoadingScreen();
+});
