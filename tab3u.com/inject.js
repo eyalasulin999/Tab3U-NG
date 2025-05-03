@@ -120,7 +120,7 @@ function isMobile() {
 }
 
 function getEasyVersionElements() {
-	return global.isMobile ? [document.querySelector("a.pannelB2.cME1"), document.querySelector("a.linkSM1")] : [document.getElementById("eLinkZ")];
+	return global.isMobile ? [document.querySelector("a.pannelB2.cME1"), document.querySelector("a.linkSM1")] : [document.querySelector("a#eLinkZ")];
 }
 
 function getEasyVersionTone() {
